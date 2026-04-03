@@ -1,6 +1,4 @@
 package com.project.fitness_tracker.controller;
-
-
 import com.project.fitness_tracker.dto.RegisterRequest;
 import com.project.fitness_tracker.dto.UserResponse;
 import com.project.fitness_tracker.model.User;
@@ -30,18 +28,10 @@ public class AuthController {
     public ResponseEntity<UserResponse> register(@RequestBody RegisterRequest request)
     {
         log.info("AuthController - register method invoked execute:{}",request);
-       User savedUser = userService.register(request);
 
-        return ResponseEntity.ok(mapToResponse(savedUser));
+        return ResponseEntity.ok(userService.register(request));
     }
 
-    private UserResponse mapToResponse(User user) {
-
-        log.info("AuthController - mapToResponse method invoked execute:{}",user);
-
-        UserResponse userResponse = new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getCreatedAt(), user.getUpdatedAt());
-        return userResponse;
-    }
 
 
 }

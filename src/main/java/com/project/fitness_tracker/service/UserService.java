@@ -19,11 +19,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    private static final Logger log= LoggerFactory.getLogger(UserResponse.class);
+    private static final Logger log= LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
 
-    public User register(RegisterRequest request)
+    public UserResponse register(RegisterRequest request)
     {
 
         log.info("UserService - register method executed:{}",request);
@@ -35,6 +35,7 @@ public class UserService {
                 .lastName(request.getLastName())
                 .build();
 
+        return mapToUserResponse(userRepository.save(user));
 
   /*      User user=new User(
                 null,
@@ -54,11 +55,26 @@ public class UserService {
 //                Instant.parse("2026-04-02T15:30:45+00:00")
 //                        .atZone(ZoneOffset.UTC)
 //                        .toLocalDateTime()
- //       );
+        //       );
 
-
-       return userRepository.save(user);
     }
+
+    private UserResponse mapToUserResponse(User user) {
+
+        log.info("UserService - mapToResponse method execute:{}",user);
+
+        UserResponse userResponse = new UserResponse(
+                user.getId(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getCreatedAt(),
+                user.getUpdatedAt()
+        );
+        return userResponse;
+    }
+
 }
 /*
 

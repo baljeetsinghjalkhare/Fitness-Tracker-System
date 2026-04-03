@@ -4,10 +4,14 @@ import com.project.fitness_tracker.model.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, String> {
-     //public Optional<Activity> findByEmail(String email);
+  public  List<Activity> findBy(String id);
+
+    List<Activity> findByUserId(String userId);
+    //public Optional<Activity> findByEmail(String email);
 }
 
