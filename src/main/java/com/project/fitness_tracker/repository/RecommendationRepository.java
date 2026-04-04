@@ -8,6 +8,6 @@ import java.util.List;
 public interface RecommendationRepository extends JpaRepository<Recommendation, String> {
 
     List<Recommendation> findByUserId(String id);
-//    List<Recommendation> findByActivityId(String id);
+    List<Recommendation> findByActivityId(String id);
 
 }

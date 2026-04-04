@@ -35,9 +35,9 @@ public class RecommendationController {
      return ResponseEntity.ok(recommendationService.getUserRecommendation(id));
     }
 
-//    @GetMapping("/activity/{activityId}")// take activityId through PAthVariable
-//     public ResponseEntity<List<RecommendationResponse>> getActivityRecommendation(@PathVariable String activityId)
-//    {
-//     return ResponseEntity.ok(recommendationService.getActivityRecommendation(activityId));
-//    }
+    @GetMapping("/activity/{activityId}")// take activityId through PAthVariable
+     public ResponseEntity<List<RecommendationResponse>> getActivityRecommendation(@PathVariable String activityId)
+    {
+     return ResponseEntity.ok(recommendationService.getActivityRecommendation(activityId));
+    }
 }

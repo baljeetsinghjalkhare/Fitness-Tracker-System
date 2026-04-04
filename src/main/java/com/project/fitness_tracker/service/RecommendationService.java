@@ -79,14 +79,14 @@ public class RecommendationService {
     }
 
 
-//    public List<RecommendationResponse> getActivityRecommendation(String activityId) {
-//
-//        List<Recommendation> recommendationList=recommendationRepository.findByActivityId(activityId);
-//
-//        return recommendationList
-//                .stream()
-//                .map(this::mapToRecommendationResponse)
-//                .collect(Collectors.toList());
-//
-//    }
+    public List<RecommendationResponse> getActivityRecommendation(String activityId) {
+
+        List<Recommendation> recommendationList=recommendationRepository.findByActivityId(activityId);
+
+        return recommendationList
+                .stream()
+                .map(this::mapToRecommendationResponse)
+                .collect(Collectors.toList());
+
+    }
 }
