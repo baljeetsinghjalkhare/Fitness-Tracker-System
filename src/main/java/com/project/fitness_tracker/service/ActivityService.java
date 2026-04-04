@@ -53,6 +53,7 @@ public class ActivityService {
         return mapToActivityResponse(savedActivity);
     }
 
+    //methodfor converting Activity to ActivityResponse
     private ActivityResponse mapToActivityResponse(Activity activity) {
 
         log.info("ActivityService - mapToActivityResponse executed, Activity:{}", activity);

@@ -1,17 +1,16 @@
 package com.project.fitness_tracker.controller;
 
 import com.project.fitness_tracker.dto.RecommendationRequest;
+import com.project.fitness_tracker.dto.RecommendationResponse;
 import com.project.fitness_tracker.model.Recommendation;
 import com.project.fitness_tracker.service.RecommendationService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -29,4 +28,16 @@ public class RecommendationController {
         // Placeholder for recommendation generation logic
         return ResponseEntity.ok(recommendationService.generateRecommendation(request));
     }
+
+    @GetMapping("/user")  //take activityId through RequestHeader
+    public ResponseEntity<List<RecommendationResponse>> getUserRecommendation(@RequestHeader(value = "X-User-Id") String id)
+    {
+     return ResponseEntity.ok(recommendationService.getUserRecommendation(id));
+    }
+
+//    @GetMapping("/activity/{activityId}")// take activityId through PAthVariable
+//     public ResponseEntity<List<RecommendationResponse>> getActivityRecommendation(@PathVariable String activityId)
+//    {
+//     return ResponseEntity.ok(recommendationService.getActivityRecommendation(activityId));
+//    }
 }

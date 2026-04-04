@@ -25,7 +25,7 @@ public class ActivityController {
     {
 
         return ResponseEntity.ok(activityService.trackActivity(request));
-        }
+    }
 
     @GetMapping //("/{id}") using path variable to fetch activity of specific user
     public ResponseEntity<List<ActivityResponse>> getUserActivity(@RequestHeader(value = "X-User-Id") String id) {
